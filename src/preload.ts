@@ -3,5 +3,7 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('api', {
-    readDir: () => ipcRenderer.invoke('read-dir')
+    readDir: (path: string) => ipcRenderer.invoke('read-dir', path),
+    onFolderOpened: (callback: (folderPath: string) => void) => 
+        ipcRenderer.on('folder-opened', (_, folderPath: string) => callback(folderPath)),
 });

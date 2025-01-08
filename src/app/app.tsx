@@ -8,8 +8,6 @@ type MarkdownFile = {
   content: string
 }
 
-console.log("amogus");
-
 const App: React.FC = () => {
     const [markdownContent, setMarkdownContent] = useState<string>("# Welcome to Your Markdown App");
     const [selectedFile, setSelectedFile] = useState<string | null>(null);
@@ -38,6 +36,7 @@ const App: React.FC = () => {
       </div>
     );
   };
+
   
 const styles: {[key: string]: React.CSSProperties} = {
     container: {
