@@ -44,6 +44,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@wysimark/react": "^3.0.20",
     "electron-squirrel-startup": "^1.0.1",
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
