@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createRoot } from 'react-dom/client';
-import Markdown from 'react-markdown';
 import FilesView from "./FilesView";
+import { Editable, useEditor } from "@wysimark/react";
 
 type MarkdownFile = {
   name: string,
@@ -11,7 +11,7 @@ type MarkdownFile = {
 const App: React.FC = () => {
     const [markdownContent, setMarkdownContent] = useState<string>("# Welcome to Your Markdown App");
     const [selectedFile, setSelectedFile] = useState<string | null>(null);
-  
+    const editor = useEditor(null);
     const fileList: MarkdownFile[] = [
       { name: "File1.md", content: "# This is File 1\n\nHello, world!" },
       { name: "File2.md", content: "## This is File 2\n\nMarkdown content here." },
@@ -24,6 +24,7 @@ const App: React.FC = () => {
     };
 
     let myContent = "# This is File 1";
+
   
     return (
       <div style={styles.container}>
@@ -31,7 +32,7 @@ const App: React.FC = () => {
           <FilesView selectedFile={selectedFile} setSelectedFile={setSelectedFile}/>
         </div>
         <div style={styles.main}>
-          <Markdown>{myContent}</Markdown>
+          <Editable editor={editor} value={markdownContent} onChange={setMarkdownContent}/>
         </div>
       </div>
     );
